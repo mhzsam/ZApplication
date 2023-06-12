@@ -1,0 +1,6 @@
+﻿Add-Migration InitialCreate -Context CommerceContext -OutputDir Migrations\CommerceMigrations
+
+Add-Migration InitialCreate -S API  -Context CommerceContext -OutputDir Migrations\CommerceMigrations
+
+ Add-Migration initdatabase2 -S Presentation -Context ApplicationDBContext -OutputDir Migrations
+ Update-Database -S Presentation
