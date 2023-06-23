@@ -24,7 +24,7 @@ namespace Domain.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());
-            modelBuilder.Entity<User>().HasData(new User() { Id = 1, FirstName = "Mohammad", LastName = "Zarrabi", Password = PasswordHelper.PasswordToSHA256("1234"), EmailAddress = "mhzsam@gmail.com" });
+            modelBuilder.Entity<User>().HasData(new User() { Id = 1, FirstName = "Mohammad", LastName = "Zarrabi", Password = PasswordHelper.PasswordToSHA256("1234"), EmailAddress = "mhzsam@gmail.com" ,MobileNumber="09120198177"});
             modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
             modelBuilder.ApplyConfiguration(new RolePermissionConfiguration());
 

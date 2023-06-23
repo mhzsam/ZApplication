@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Domain.Migrations
 {
-    public partial class Add_Permisiion : Migration
+    public partial class initdatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -55,9 +55,10 @@ namespace Domain.Migrations
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastLoginDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ForceChanePassword = table.Column<bool>(type: "bit", nullable: false),
+                    Token = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 6, 12, 22, 10, 35, 753, DateTimeKind.Local).AddTicks(5919)),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 6, 23, 19, 15, 36, 387, DateTimeKind.Local).AddTicks(2277)),
                     InsertBy = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateBy = table.Column<int>(type: "int", nullable: true)
@@ -77,7 +78,7 @@ namespace Domain.Migrations
                     PermissionId = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 6, 12, 22, 10, 35, 753, DateTimeKind.Local).AddTicks(9551)),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 6, 23, 19, 15, 36, 387, DateTimeKind.Local).AddTicks(7807)),
                     InsertBy = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateBy = table.Column<int>(type: "int", nullable: true)
@@ -109,7 +110,7 @@ namespace Domain.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 6, 12, 22, 10, 35, 753, DateTimeKind.Local).AddTicks(8294)),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 6, 23, 19, 15, 36, 387, DateTimeKind.Local).AddTicks(5790)),
                     InsertBy = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateBy = table.Column<int>(type: "int", nullable: true)
@@ -133,8 +134,8 @@ namespace Domain.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Avatar", "DeletedDate", "EmailAddress", "FirstName", "ForceChanePassword", "InsertDate", "LastLoginDate", "LastName", "MobileNumber", "NationalCode", "Password", "PhoneNumber", "UpdateBy", "UpdateDate" },
-                values: new object[] { 1, null, null, "mhzsam@gmail.com", "Mohammad", false, new DateTime(2023, 6, 12, 22, 10, 36, 347, DateTimeKind.Local).AddTicks(9297), null, "Zarrabi", 0, null, "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", null, null, null });
+                columns: new[] { "Id", "Avatar", "DeletedDate", "EmailAddress", "FirstName", "ForceChanePassword", "InsertDate", "LastLoginDate", "LastName", "MobileNumber", "NationalCode", "Password", "PhoneNumber", "Token", "UpdateBy", "UpdateDate" },
+                values: new object[] { 1, null, null, "mhzsam@gmail.com", "Mohammad", false, new DateTime(2023, 6, 23, 19, 15, 36, 702, DateTimeKind.Local).AddTicks(466), null, "Zarrabi", 0, null, "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", null, null, null, null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_RolePermissions_PermissionId",

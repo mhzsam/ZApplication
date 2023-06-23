@@ -9,12 +9,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Entites.Base
 {
-    public class BaseEntity : IBaseEntity
+    public class BaseEntity : EntityClass, IBaseEntity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Required(ErrorMessage = "مقدار شناسه الزامی است ")]
-        public int Id { get; set; }
+        
 
         [DefaultValue(false)]
         public bool IsDeleted { get; set; }

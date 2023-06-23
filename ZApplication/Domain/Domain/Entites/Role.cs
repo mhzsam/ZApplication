@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Domain.Entites.Base;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Entites
 {
-    public class Role
+    public class Role: EntityClass
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Required(ErrorMessage = "مقدار شناسه الزامی است ")]
-        public int Id { get; set; }
+        
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required(ErrorMessage = "مقدار نقش الزامی است ")]
         [MaxLength(32)]

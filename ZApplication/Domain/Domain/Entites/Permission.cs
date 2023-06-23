@@ -6,15 +6,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Entites.Base;
 
 namespace Domain.Entites
 {
-    public class Permission
+    public class Permission: EntityClass
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Required(ErrorMessage = "مقدار شناسه الزامی است ")]
-        public int Id { get; set; }
+       
         [MaxLength(32)]
         [Required(ErrorMessage = "مقدار نام پروژه الزامی است ")]
         public string ProjectName { get; set; }

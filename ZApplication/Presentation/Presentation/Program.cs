@@ -1,4 +1,5 @@
 using Application.SetUp;
+using Infrastructure.SetUp;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 string connectionString = builder.Configuration.GetConnectionString("SqlConnection");
 builder.Services.AddApplicationDBContext(connectionString);
+builder.Services.AddJWTConfig(builder.Configuration);
+builder.Services.AddJWT();
+builder.Services.AddAllApplicationServices();
+builder.Services.AddInfrastructureService();
+
+
 
 var app = builder.Build();
 
@@ -22,6 +29,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

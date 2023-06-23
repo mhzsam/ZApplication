@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Domain.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20230612184036_Add_Permisiion")]
-    partial class Add_Permisiion
+    [Migration("20230623155526_initdatabase2")]
+    partial class initdatabase2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -98,7 +98,7 @@ namespace Domain.Migrations
                     b.Property<DateTime>("InsertDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 6, 12, 22, 10, 35, 753, DateTimeKind.Local).AddTicks(9551));
+                        .HasDefaultValue(new DateTime(2023, 6, 23, 19, 25, 25, 647, DateTimeKind.Local).AddTicks(3659));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -161,7 +161,7 @@ namespace Domain.Migrations
                     b.Property<DateTime>("InsertDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 6, 12, 22, 10, 35, 753, DateTimeKind.Local).AddTicks(5919));
+                        .HasDefaultValue(new DateTime(2023, 6, 23, 19, 25, 25, 646, DateTimeKind.Local).AddTicks(9810));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -176,17 +176,21 @@ namespace Domain.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("MobileNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("MobileNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("NationalCode")
-                        .HasColumnType("int");
+                    b.Property<string>("NationalCode")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PhoneNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UpdateBy")
                         .HasColumnType("int");
@@ -206,10 +210,10 @@ namespace Domain.Migrations
                             FirstName = "Mohammad",
                             ForceChanePassword = false,
                             InsertBy = 0,
-                            InsertDate = new DateTime(2023, 6, 12, 22, 10, 36, 458, DateTimeKind.Local).AddTicks(1048),
+                            InsertDate = new DateTime(2023, 6, 23, 19, 25, 26, 290, DateTimeKind.Local).AddTicks(8218),
                             IsDeleted = false,
                             LastName = "Zarrabi",
-                            MobileNumber = 0,
+                            MobileNumber = "09120198177",
                             Password = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"
                         });
                 });
@@ -233,7 +237,7 @@ namespace Domain.Migrations
                     b.Property<DateTime>("InsertDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 6, 12, 22, 10, 35, 753, DateTimeKind.Local).AddTicks(8294));
+                        .HasDefaultValue(new DateTime(2023, 6, 23, 19, 25, 25, 647, DateTimeKind.Local).AddTicks(2568));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()

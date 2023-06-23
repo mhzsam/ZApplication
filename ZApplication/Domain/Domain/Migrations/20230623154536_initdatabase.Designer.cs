@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Domain.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20230612185621_Add_Token")]
-    partial class Add_Token
+    [Migration("20230623154536_initdatabase")]
+    partial class initdatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -98,7 +98,7 @@ namespace Domain.Migrations
                     b.Property<DateTime>("InsertDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 6, 12, 22, 26, 20, 583, DateTimeKind.Local).AddTicks(8391));
+                        .HasDefaultValue(new DateTime(2023, 6, 23, 19, 15, 36, 387, DateTimeKind.Local).AddTicks(7807));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -161,7 +161,7 @@ namespace Domain.Migrations
                     b.Property<DateTime>("InsertDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 6, 12, 22, 26, 20, 583, DateTimeKind.Local).AddTicks(4961));
+                        .HasDefaultValue(new DateTime(2023, 6, 23, 19, 15, 36, 387, DateTimeKind.Local).AddTicks(2277));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -209,7 +209,7 @@ namespace Domain.Migrations
                             FirstName = "Mohammad",
                             ForceChanePassword = false,
                             InsertBy = 0,
-                            InsertDate = new DateTime(2023, 6, 12, 22, 26, 21, 220, DateTimeKind.Local).AddTicks(2804),
+                            InsertDate = new DateTime(2023, 6, 23, 19, 15, 36, 788, DateTimeKind.Local).AddTicks(3778),
                             IsDeleted = false,
                             LastName = "Zarrabi",
                             MobileNumber = 0,
@@ -236,7 +236,7 @@ namespace Domain.Migrations
                     b.Property<DateTime>("InsertDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 6, 12, 22, 26, 20, 583, DateTimeKind.Local).AddTicks(7339));
+                        .HasDefaultValue(new DateTime(2023, 6, 23, 19, 15, 36, 387, DateTimeKind.Local).AddTicks(5790));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()

@@ -21,9 +21,9 @@ namespace Domain.Entites
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "شماره تماس الزامی است")]
-        public int MobileNumber { get; set; }
-        public int? NationalCode { get; set; }
-        public int? PhoneNumber { get; set; }
+        public string? MobileNumber { get; set; }
+        public string? NationalCode { get; set; }
+        public string? PhoneNumber { get; set; }
 
         public string? Avatar { get; set; }
         [MaxLength(100)]

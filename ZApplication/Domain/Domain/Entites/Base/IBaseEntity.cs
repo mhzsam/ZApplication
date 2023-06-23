@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Entites.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace Domain.Entites
 {
     public interface IBaseEntity
     {        
-        int Id { get; set; }
+       
         bool IsDeleted { get; set; }
         DateTime? DeletedDate { get; set; }   
         DateTime InsertDate { get; set; }
