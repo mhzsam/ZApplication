@@ -1,4 +1,6 @@
-﻿using Application.Service.ResponseService;
+﻿using Application.Helper;
+using Application.Interface;
+using Application.Service.ResponseService;
 using Application.Service.UserService;
 using Application.SetUp.Model;
 using Domain.Context;
@@ -18,10 +20,8 @@ namespace Application.SetUp
         {
             services.AddScoped<IResponseService, ResponseService>();
             services.AddScoped<IUserService, UserService>();
+            //services.AddSingleton(typeof(Mapper<>));
           
-
-
-
         }
 
         public static void AddApplicationDBContext(this IServiceCollection services ,string connectionString)

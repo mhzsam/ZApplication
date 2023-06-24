@@ -11,10 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="MiddleWare\" />
     <Folder Include="Validator\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Mapster" Version="7.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.19" />
   </ItemGroup>
 

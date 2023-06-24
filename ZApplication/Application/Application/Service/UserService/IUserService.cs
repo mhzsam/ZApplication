@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Application.DTO.UserService;
+using Domain.Entites;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +10,10 @@ namespace Application.Service.UserService
 {
     public interface IUserService
     {
+        Task<IEnumerable<User>> GetAll( int PageNumber, int pageSize);
+        Task<User> GetById(int id);
         public string Login(string Email, string PassWord);
+        Task<User> SingUp(AddUserModel addUserModel);
+
     }
 }
