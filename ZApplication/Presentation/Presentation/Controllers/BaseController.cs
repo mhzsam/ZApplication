@@ -6,7 +6,7 @@ namespace Presentation.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class BaseController<T>:  ControllerBase where T : BaseController<T>
+    public class BaseController:  ControllerBase 
     {
         protected readonly IResponseService responseGenerator;
 

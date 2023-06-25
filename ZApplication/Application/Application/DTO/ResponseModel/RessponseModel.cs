@@ -13,7 +13,7 @@ namespace Application.DTO.ResponseModel
         object Resualt, 
         bool HavePagination,
         Pagination Pagination,
-        string ErrorMessage, 
+        dynamic ErrorMessage, 
         HttpStatusCode ResponseCode);
 
 
