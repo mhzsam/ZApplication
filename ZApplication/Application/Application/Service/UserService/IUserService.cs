@@ -12,8 +12,9 @@ namespace Application.Service.UserService
     {
         Task<IEnumerable<User>> GetAll( int PageNumber, int pageSize);
         Task<User> GetById(int id);
-        public string Login(string Email, string PassWord);
+        public Task<(bool result,string token)> Login(string Email, string PassWord);
         Task<User> SingUp(AddUserModel addUserModel);
+
 
     }
 }

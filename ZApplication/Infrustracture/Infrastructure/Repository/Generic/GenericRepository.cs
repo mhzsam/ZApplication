@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -61,6 +62,11 @@ namespace Infrastructure.Repository.Generic
                 throw new ArgumentNullException("entity");
             }
             _entities.Update(entity);
+        }
+
+        public async Task<T> FindByAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _entities.Where(predicate).FirstOrDefaultAsync();
         }
     }
 }

@@ -3,6 +3,7 @@ using Domain.Entites;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Presentation.Controllers;
 using System.Reflection;
 
@@ -10,13 +11,53 @@ namespace Presentation.SetUp
 {
     public static class AuthorizationSeedData
     {
+        public static IServiceCollection AddSwagger(this IServiceCollection services)
+        {
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "ZApplication",
+                    Version = "1",
+
+                });
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    },
+                    Scheme = "Bearer",
+                    Name = "Authorization",
+
+                    In = ParameterLocation.Header,
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    new string[] { }
+                }
+                });
+                               
+            });
+
+            return services;
+        }
         public static void AuthorizationControllerSeedData(ApplicationDBContext context, Assembly assembly )
         {
             var projectName = assembly.FullName.Split(",")[0];
-            var ress = assembly.GetTypes()
-             .Where(type => typeof(Controller).IsAssignableFrom(type)) //filter controllers
-             .SelectMany(type => type.GetMethods())
-             .Where(method => method.IsPublic && !method.IsDefined(typeof(NonActionAttribute))).ToList();
+            
 
             var controlleractionlist = assembly.GetTypes()
             .Where(type => typeof(BaseController).IsAssignableFrom(type))

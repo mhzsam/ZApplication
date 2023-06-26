@@ -13,7 +13,7 @@ namespace Application.Service.ResponseService
     {
         public RessponseModel Fail(HttpStatusCode httpStatusCode, string message)
         {
-           return new RessponseModel(false,null,false,null,message,httpStatusCode) ;
+           return new RessponseModel(false,null,null,message,httpStatusCode) ;
         }
 
         public RessponseModel FailWithCustomErrorCode()
@@ -23,18 +23,18 @@ namespace Application.Service.ResponseService
 
         public RessponseModel Succssed()
         {
-            return new RessponseModel(true, null, false, null,null,HttpStatusCode.OK);
+            return new RessponseModel(true, null, null,null,HttpStatusCode.OK);
         }
 
         public RessponseModel SuccssedWithPagination(object result, int total, int pageNumber, int rowPerPage)
         {
-            return new RessponseModel(true, result, true, new Pagination(total,pageNumber,rowPerPage), null, HttpStatusCode.OK);
+            return new RessponseModel(true, result, new Pagination(total,pageNumber,rowPerPage), null, HttpStatusCode.OK);
 
         }
 
         public RessponseModel SuccssedWithResult(object result)
         {
-            return new RessponseModel(true, result, false, null, null, HttpStatusCode.OK);
+            return new RessponseModel(true, result, null, null, HttpStatusCode.OK);
         }
     }
 }

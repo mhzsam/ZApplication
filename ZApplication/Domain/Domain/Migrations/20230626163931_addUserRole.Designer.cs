@@ -4,6 +4,7 @@ using Domain.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Domain.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230626163931_addUserRole")]
+    partial class addUserRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -216,7 +218,7 @@ namespace Domain.Migrations
                             FirstName = "Mohammad",
                             ForceChanePassword = false,
                             InsertBy = 0,
-                            InsertDate = new DateTime(2023, 6, 26, 20, 9, 31, 598, DateTimeKind.Local).AddTicks(2487),
+                            InsertDate = new DateTime(2023, 6, 26, 20, 9, 31, 584, DateTimeKind.Local).AddTicks(3147),
                             IsDeleted = false,
                             LastName = "Zarrabi",
                             MobileNumber = "09120198177",
@@ -275,7 +277,7 @@ namespace Domain.Migrations
                         {
                             Id = 1,
                             InsertBy = 0,
-                            InsertDate = new DateTime(2023, 6, 26, 20, 9, 31, 598, DateTimeKind.Local).AddTicks(5322),
+                            InsertDate = new DateTime(2023, 6, 26, 20, 9, 31, 584, DateTimeKind.Local).AddTicks(6629),
                             IsDeleted = false,
                             RoleId = 1,
                             UserId = 1

@@ -1,5 +1,6 @@
 ﻿using Application.DTO.ResponseModel;
 using Application.DTO.UserService;
+using Application.Helper;
 using Application.Interface;
 using Application.Service.ResponseService;
 using Application.Service.UserService;
@@ -34,6 +35,16 @@ namespace Presentation.Controllers
         {
             var model = await _userService.SingUp(addUserModel);
             return responseGenerator.SuccssedWithResult(model);
+        }
+        [HttpPost]
+        public async Task<RessponseModel> Login(string email,string password)
+        {
+            var model = await _userService.Login(email, password);
+            if (!model.result)
+            {
+             return   responseGenerator.Fail(System.Net.HttpStatusCode.NotFound, ErrorText.NotFoundUser);
+            }
+            return responseGenerator.SuccssedWithResult($"Token= {model.token}");
         }
     }
 }

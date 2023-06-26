@@ -24,6 +24,7 @@ namespace Application.SetUp
 
         public static void AddAllApplicationServices(this IServiceCollection services)
         {
+            services.AddMemoryCache();
             services.AddScoped<IResponseService, ResponseService>();
             services.AddScoped<IUserService, UserService>();
             //services.AddSingleton(typeof(Mapper<>));
@@ -42,7 +43,7 @@ namespace Application.SetUp
                          ErrorDescription =modelError.Value.Errors.FirstOrDefault().ErrorMessage
                      }).ToList();
 
-                   var model = new RessponseModel(false, null, false,null ,errorRecordList, HttpStatusCode.BadRequest);
+                   var model = new RessponseModel(false, null,null ,errorRecordList, HttpStatusCode.BadRequest);
 
 
                    return new BadRequestObjectResult(model);
