@@ -44,7 +44,7 @@ namespace Presentation.Controllers
             {
              return   responseGenerator.Fail(System.Net.HttpStatusCode.NotFound, ErrorText.NotFoundUser);
             }
-            return responseGenerator.SuccssedWithResult($"Token= {model.token}");
+            return responseGenerator.SuccssedWithResult($"Bearer {model.token}");
         }
     }
 }
