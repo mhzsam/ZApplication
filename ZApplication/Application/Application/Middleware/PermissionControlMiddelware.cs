@@ -37,16 +37,19 @@ namespace Application.MiddleWare
     {
         private readonly RequestDelegate _next;
         private readonly IMemoryCache _cache;
-     
+        private readonly IServiceScopeFactory _scopeFactory;
 
-        public PermissionCheck(RequestDelegate next, IMemoryCache cache)
+
+
+        public PermissionCheck(RequestDelegate next, IMemoryCache cache, IServiceScopeFactory scopeFactory)
         {
             _next = next;
             _cache = cache;
-           
+            _scopeFactory = scopeFactory;
+
         }
 
-        public async Task Invoke(HttpContext httpContext, ApplicationDBContext _dbContext)
+        public async Task Invoke(HttpContext httpContext)
         {
             // 1 - if the request is not authenticated, nothing to do
             if (httpContext.User.Identity == null || !httpContext.User.Identity.IsAuthenticated)
@@ -66,18 +69,22 @@ namespace Application.MiddleWare
             var userPermission = (List<string>)_cache.Get("permission-" + userId);
             if (userPermission == null)
             {
-
-                var role = await _dbContext.UserRols.AsNoTracking().Where(s => s.UserId.ToString() == userId).Select(s => s.RoleId).ToListAsync();
-                var rolePermission = await _dbContext.RolePermissions.AsNoTracking().Where(s => role.Contains(s.RoleId)).Select(s => s.PermissionId).ToListAsync();
-                userPermission = await _dbContext.Permissions.AsNoTracking().Where(s => rolePermission.Contains(s.Id)).Select(s => s.ProjectName + "&" + s.ControllerName + "&" + s.ActionName + "&" + s.ActionMethod).ToListAsync();
-                var options =  new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(120))
-                                                           .SetSlidingExpiration(TimeSpan.FromMinutes(60));
-                _dbContext = null;
+                using (var scope = _scopeFactory.CreateScope())
+                {
+                    var _dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDBContext>();
+                    var role = await _dbContext.UserRols.AsNoTracking().Where(s => s.UserId.ToString() == userId).Select(s => s.RoleId).ToListAsync();
+                    var rolePermission = await _dbContext.RolePermissions.AsNoTracking().Where(s => role.Contains(s.RoleId)).Select(s => s.PermissionId).ToListAsync();
+                    userPermission = await _dbContext.Permissions.AsNoTracking().Where(s => rolePermission.Contains(s.Id)).Select(s => s.ProjectName + "&" + s.ControllerName + "&" + s.ActionName + "&" + s.ActionMethod).ToListAsync();
+                  
+                  
+                }
 
                 for (var i = 0; i < userPermission.Count; i++)
                 {
                     userPermission[i] = userPermission[i].ToLower();
                 }
+                var options = new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(120))
+                                                             .SetSlidingExpiration(TimeSpan.FromMinutes(60));
 
                 _cache.Set("permission-" + userId, userPermission, options);
             }
