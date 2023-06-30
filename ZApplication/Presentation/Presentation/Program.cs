@@ -52,7 +52,7 @@ AuthorizationSeedData.AuthorizationControllerSeedData(
                     Assembly.GetExecutingAssembly()
                     );
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
