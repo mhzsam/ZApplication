@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Interface
 {
-    public interface IUnitOfWork<T> :IGenericRepository<T>, IDisposable where T : EntityClass
+    public interface IUnitOfWork<T> :IGenericRepository<T> where T : EntityClass
     {
         public Task<bool> SaveChanges();
     }

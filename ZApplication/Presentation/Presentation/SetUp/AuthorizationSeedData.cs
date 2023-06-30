@@ -56,6 +56,7 @@ namespace Presentation.SetUp
         }
         public static void AuthorizationControllerSeedData(ApplicationDBContext context, Assembly assembly )
         {
+           
             var projectName = assembly.FullName.Split(",")[0];
             
 
